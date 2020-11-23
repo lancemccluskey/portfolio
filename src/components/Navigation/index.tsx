@@ -61,7 +61,7 @@ export const Navigation: FunctionComponent = (): JSX.Element => {
   const theme = useResponsiveValue(['red', 'green', 'blue']);
 
   return (
-    <Flex as="nav" sx={{ justifyContent: 'space-between', height: '55px', alignItems: 'center', position: 'sticky', top: 0, backgroundColor: 'background' }}>
+    <Flex as="nav" sx={{ justifyContent: 'space-between', height: '55px', alignItems: 'center', position: 'sticky', top: 0, backgroundColor: 'background', zIndex: 1 }}>
       <Link href="/">
         <NavLink sx={{ cursor: 'pointer', marginLeft: 3, marginTop: 1 }}>
           <Image
