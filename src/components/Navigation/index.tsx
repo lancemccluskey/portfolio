@@ -1,5 +1,5 @@
 /** @jsx */
-import { jsx, Flex, NavLink, MenuButton, Box } from 'theme-ui';
+import { jsx, Flex, NavLink, MenuButton, Box, Container, CSSProperties } from 'theme-ui';
 import { useResponsiveValue, useBreakpointIndex } from '@theme-ui/match-media';
 import { FunctionComponent, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
@@ -18,32 +18,36 @@ const pages = ['about', 'portfolio', 'resume', 'contact', 'blog'];
 
 
 const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+  open: {
+    clipPath: `circle(2200px at 150px 30px)`,
     transition: {
       type: "spring",
       stiffness: 20,
       restDelta: 2
-    }
-  }),
+    },
+    background: '#232324'
+  },
   closed: {
-    clipPath: "circle(30px at 40px 40px)",
+    clipPath: "circle(24px at 149px 27px)",
     transition: {
-      delay: 0.5,
+      delay: 0.15,
       type: "spring",
       stiffness: 400,
       damping: 40
-    }
-  }
+    },
+    background: '#434BE7'
+  },
 };
 
-const backgroundStyle = {
+const backgroundStyle: CSSProperties = {
   position: 'absolute',
   top: 0,
   right: 0,
   bottom: 0,
-  width: '300px',
-  background: '#E5E5E5',
+  width: '200px',
+  background: '#434BE7',
+  zIndex: -1,
+  height: '100vh'
 };
 
 const StyledNav = styled(motion.nav)`
@@ -60,7 +64,13 @@ export const Navigation: FunctionComponent = (): JSX.Element => {
     <Flex as="nav" sx={{ justifyContent: 'space-between', height: '55px', alignItems: 'center', position: 'sticky', top: 0, backgroundColor: 'background' }}>
       <Link href="/">
         <NavLink sx={{ cursor: 'pointer', marginLeft: 3, marginTop: 1 }}>
-          <Image src="/tlm-logo.svg" alt="Logo" width={212} height={50} quality={100} />
+          <Image
+            src="/tlm-logo.svg"
+            alt="Logo"
+            width={212}
+            height={50}
+            quality={100}
+          />
         </NavLink>
       </Link>
       {
@@ -70,6 +80,7 @@ export const Navigation: FunctionComponent = (): JSX.Element => {
               initial={false}
               animate={open ? "open" : "closed"}
             >
+              <motion.div style={backgroundStyle} variants={sidebar} />
               <NavMenuToggle toggle={() => toggleOpen()} />
               <NavMenu pages={pages} open={open} />
             </StyledNav>
