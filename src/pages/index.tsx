@@ -6,6 +6,9 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useMediaQuery } from 'hooks';
 
+// TODO: Need to fix signature for screen width 500 - 630px, in middle of head right now
+// TODO: Need to figure out how to position svg within constraints of image box
+
 const AnimatedHeading = motion.custom(Heading);
 
 const AnimatedText = motion.custom(Text);
@@ -26,7 +29,7 @@ const Home: FunctionComponent = (): JSX.Element => {
   if (isBreakpoint) {
     return (
       <Flex sx={{ flexDirection: 'column' }}>
-        <Box sx={{ width: '100%', maxHeight: '533px' }}>
+        <Box sx={{ width: '100%', zIndex: -5, maxHeight: '533px' }}>
           <Image
             src="/profile.jpg"
             alt="Profile"
@@ -35,7 +38,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             width={800}
             quality={100}
           />
-          <motion.svg
+                  <motion.svg
             width="400"
             height="300"
             initial={false}
@@ -43,7 +46,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             style={{
               position: 'absolute',
               bottom: theme,
-              right: '-150px'
+              right: 0,
             }}
           >
           <motion.path
