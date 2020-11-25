@@ -9,13 +9,7 @@ import { motion, useCycle } from 'framer-motion';
 import { NavMenu } from './NavMenu';
 import { NavMenuToggle } from './NavMenuToggle';
 
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: '-100%' }
-};
-
-const pages = ['about', 'portfolio', 'resume', 'contact', 'blog'];
-
+const pages = ['home', 'about', 'portfolio', 'resume', 'contact', 'blog'];
 
 const sidebar = {
   open: {
@@ -28,7 +22,7 @@ const sidebar = {
     background: '#232324'
   },
   closed: {
-    clipPath: "circle(24px at 149px 27px)",
+    clipPath: "circle(24px at 149px 25px)",
     transition: {
       delay: 0.15,
       type: "spring",
@@ -45,7 +39,7 @@ const backgroundStyle: CSSProperties = {
   right: 0,
   bottom: 0,
   width: '200px',
-  background: '#434BE7',
+  background: '#E5E5E5',
   zIndex: -1,
   height: '100vh'
 };

@@ -24,7 +24,11 @@ export const NavMenu: FunctionComponent<INavMenuProps> = ({ pages, open }): JSX.
     style = {
       display: 'flex',
       flexDirection: 'column',
-      position: 'absolute'
+      position: 'absolute',
+      width: '200px',
+      right: 0,
+      alignItems: 'center',
+      top: 50
     }
   } else {
     style = {
@@ -35,7 +39,6 @@ export const NavMenu: FunctionComponent<INavMenuProps> = ({ pages, open }): JSX.
 
   return (
     <motion.div
-      sx={{ listStyle: 'none', color: 'red', width: '150px' }}
       style={style}
       variants={variants}
     >

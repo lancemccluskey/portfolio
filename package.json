@@ -11,6 +11,7 @@
   "dependencies": {
     "@theme-ui/match-media": "^0.3.3",
     "@types/theme-ui": "^0.3.7",
+    "beautiful-react-diagrams": "^0.4.0",
     "framer-motion": "^2.9.4",
     "next": "latest",
     "react": "16.13.1",
