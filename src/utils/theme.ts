@@ -3,6 +3,10 @@ import { Theme } from 'theme-ui';
 
 export const theme: Theme = {
   ...roboto,
+  // @ts-ignore
+  styles: {
+    ...roboto.styles,
+  },
   colors: {
     primary: '#434BE7',
     secondary: '#E5E5E5',
@@ -14,8 +18,5 @@ export const theme: Theme = {
       width: '64px',
       backgroundColor: 'red'
     },
-  },
-  styles: {
-    ...roboto.styles,
   },
 };
