@@ -40,7 +40,7 @@ export const NavItem: FunctionComponent<INavItemProps> = ({ page }): JSX.Element
         variants={variants}
         whileHover={{ scale: 1.25, color: '#434BE7' }}
     >
-      <Link href={`/${page}`}>
+      <Link href={`/${page === 'home' ? '' : page}`}>
         <NavLink>
           {page}
         </NavLink>

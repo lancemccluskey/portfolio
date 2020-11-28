@@ -1,52 +1,19 @@
 /** @jsx jsx */
-import { FunctionComponent, useEffect, useRef } from 'react';
+import { FunctionComponent, useRef } from 'react';
 import { jsx, Flex, Box, Heading, Text } from 'theme-ui';
-import { useResponsiveValue, useBreakpointIndex } from '@theme-ui/match-media';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useMediaQuery } from 'hooks';
-import Diagram, { createSchema, useSchema } from 'beautiful-react-diagrams';
-
-// TODO: Need to fix signature for screen width 500 - 630px, in middle of head right now
-// TODO: Need to figure out how to position svg within constraints of image box
-
-const initialSchema = createSchema({
-  nodes: [
-    { id: 'node-1', content: 'Node 1', coordinates: [250, 60], },
-    { id: 'node-2', content: 'Node 2', coordinates: [100, 200], },
-    { id: 'node-3', content: 'Node 3', coordinates: [250, 220], },
-    { id: 'node-4', content: 'Node 4', coordinates: [400, 200], },
-  ],
-  links: [
-    { input: 'node-1',  output: 'node-2' },
-    { input: 'node-1',  output: 'node-3' },
-    { input: 'node-1',  output: 'node-4' },
-  ]
-});
 
 const AnimatedHeading = motion.custom(Heading);
 
 const AnimatedText = motion.custom(Text);
 
 const Home: FunctionComponent = (): JSX.Element => {
-  const [schema, { onChange }] = useSchema(initialSchema);
   const boxColumnRef = useRef(null);
   const boxRowRef = useRef(null);
   const isBreakpoint = useMediaQuery(832);
-  const index = useBreakpointIndex();
-  // x < 640, 640 <= x < 832, 832 <= x < 1024, 1024 <= x
-  const theme = useResponsiveValue(['250px', '-50px', '-200px', '-75px']);
-  const viewBoxHeight = useResponsiveValue(['500', '400', '300', '200']);
 
-  useEffect(() => {
-    console.log('boxColumnRef -> height', boxColumnRef.current?.offsetHeight);
-    console.log('boxColumnRef -> height', boxRowRef.current);
-  });
-
-  const sigTop = (boxColumnRef.current?.offsetHeight && boxColumnRef.current?.offsetHeight - 125) || 175;
-
-  const sigLeft = (boxRowRef.current?.offsetWidth && boxRowRef.current?.offsetWidth - 125) || 100;
-  
   if (isBreakpoint) {
     return (
       <Flex sx={{ flexDirection: 'column' }}>
@@ -92,7 +59,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1 }}
             animate={{ opacity: 1, x: 0 }}
-          >Husband.
+          >Husband
           </AnimatedHeading>
           <AnimatedHeading
             as="h1"
@@ -100,7 +67,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1, delay: 0.5 }}
             animate={{ opacity: 1, x: 0 }}
-          >Father.
+          >Father
           </AnimatedHeading>
           <AnimatedHeading
             as="h1"
@@ -108,7 +75,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1, delay: 1 }}
             animate={{ opacity: 1, x: 0 }}
-          >Engineer.
+          >Engineer
           </AnimatedHeading>
           <AnimatedHeading
             as="h1"
@@ -116,7 +83,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1, delay: 1.5 }}
             animate={{ opacity: 1, x: 0 }}
-          >Veteran.
+          >Veteran
           </AnimatedHeading>
           <AnimatedText
             sx={{ color: 'muted' }}
@@ -124,12 +91,9 @@ const Home: FunctionComponent = (): JSX.Element => {
             transition={{ duration: 1, delay: 2 }}
             animate={{ opacity: 1 }}
           >
-          Highly motivated and curious professional open to collaborating.
+          Professional software engineer open to collaborating.
           </AnimatedText>
         </Box>
-        {/* <Box sx={{ height: '22.5rem' }}>
-          <Diagram schema={schema} onChange={onChange} />
-          </Box> */}
       </Flex>
     );
   } else {
@@ -176,7 +140,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1 }}
             animate={{ opacity: 1, x: 0 }}
-          >Husband.
+          >Husband
           </AnimatedHeading>
           <AnimatedHeading
             as="h1"
@@ -184,7 +148,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1, delay: 0.5 }}
             animate={{ opacity: 1, x: 0 }}
-          >Father.
+          >Father
           </AnimatedHeading>
           <AnimatedHeading
             as="h1"
@@ -192,7 +156,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1, delay: 1 }}
             animate={{ opacity: 1, x: 0 }}
-          >Engineer.
+          >Engineer
           </AnimatedHeading>
           <AnimatedHeading
             as="h1"
@@ -200,7 +164,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 1, delay: 1.5 }}
             animate={{ opacity: 1, x: 0 }}
-          >Veteran.
+          >Veteran
           </AnimatedHeading>
           <AnimatedText
             sx={{ color: 'muted' }}
@@ -208,7 +172,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             transition={{ duration: 1, delay: 2 }}
             animate={{ opacity: 1 }}
           >
-          Highly motivated and curious professional open to collaborating.
+          Professional software engineer open to collaborating.
           </AnimatedText>
         </Box>
       </Flex>

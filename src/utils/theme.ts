@@ -1,6 +1,6 @@
 import { roboto } from '@theme-ui/presets';
 import { Theme } from 'theme-ui';
-
+// TODO: Submit issue for types issue with Theme
 export const theme: Theme = {
   ...roboto,
   // @ts-ignore
