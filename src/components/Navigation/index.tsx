@@ -9,7 +9,8 @@ import { motion, useCycle } from 'framer-motion';
 import { NavMenu } from './NavMenu';
 import { NavMenuToggle } from './NavMenuToggle';
 
-const pages = ['home', 'about', 'portfolio', 'resume', 'contact', 'blog'];
+// const pages = ['home', 'about', 'portfolio', 'resume', 'contact', 'blog'];
+const pages = ['home', 'about'];
 
 const sidebar = {
   open: {
@@ -80,23 +81,15 @@ export const Navigation: FunctionComponent = (): JSX.Element => {
             </StyledNav>
           )
           : (
-          <Fragment>
-            <Link href="/about">
-              <NavLink sx={{ cursor: 'pointer' }}>About</NavLink>
-            </Link>
-            <Link href="/portfolio">
-              <NavLink sx={{ cursor: 'pointer' }}>Portfolio</NavLink>
-            </Link>
-            <Link href="/resume">
-              <NavLink sx={{ cursor: 'pointer' }}>Resume</NavLink>
-            </Link>
-            <Link href="/contact">
-              <NavLink sx={{ cursor: 'pointer' }}>Contact</NavLink>
-            </Link>
-            <Link href="/blog">
-              <NavLink sx={{ cursor: 'pointer', marginRight: 4}}>Blog</NavLink>
-            </Link>
-          </Fragment>
+            <Flex sx={{ justifyContent: 'flex-start', width: '100%' }}>
+              {
+                pages.map((page, index) => (
+                  <Link href={`/${page}`} key={index}>
+                    <NavLink sx={{ cursor: 'pointer', marginLeft: '32px' }}>{page}</NavLink>
+                  </Link>
+                ))
+              }
+          </Flex>
           )
       }
     </Flex>
